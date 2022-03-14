@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public abstract class Utilities {
 
+    //Read array from input
     public static int[] readElements(int[] arrayElements) {
         Scanner input = new Scanner(System.in);
 
@@ -24,6 +25,7 @@ public abstract class Utilities {
         return arrayElements = elements;
     }
 
+    //Overloaded method for array of Strings
     public static String[] readElements(String[] arrayElements) {
         Scanner input = new Scanner(System.in);
 
@@ -43,6 +45,7 @@ public abstract class Utilities {
         return arrayElements = elements;
     }
 
+    //Print array on console
     public static void printArray(int[] array) {
         System.out.print("[ ");
         for (int pointer = 0; pointer < array.length; pointer++) {
@@ -55,6 +58,7 @@ public abstract class Utilities {
         System.out.println();
     }
 
+    //Overloaded method for array of strings
     public static void printArray(String[] array) {
         System.out.print("[ ");
         for (int pointer = 0; pointer < array.length; pointer++) {

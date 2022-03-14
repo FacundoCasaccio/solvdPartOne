@@ -7,9 +7,10 @@ public class Main {
         System.out.println("Welcome to quicksort");
 
         Menu.displayMenu();
-        int option = Menu.selection();
+        int option = Menu.selection(); //Get selected option
 
         switch (option) {
+            //array of numbers options
             case 1, 2 -> {
                 NumberArray numberArray = new NumberArray(); //Initialize array of numbers
 
@@ -31,6 +32,7 @@ public class Main {
                 Utilities.printArray(numberArray.getElements());
             }
 
+            //array of Strings option
             case 3, 4 -> {
                 LetterArray letterArray = new LetterArray();
 

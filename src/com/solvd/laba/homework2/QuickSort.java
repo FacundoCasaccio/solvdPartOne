@@ -65,6 +65,7 @@ public abstract class QuickSort {
         SortDownwards(array, leftPointer + 1, highIndex);
     }
 
+    //Overloaded methods for strings
     public static void SortUpwards(String[] array, int lowIndex, int highIndex) {
 
         if (lowIndex >= highIndex) {
@@ -80,7 +81,7 @@ public abstract class QuickSort {
             while (array[leftPointer].compareToIgnoreCase(pivot) <= 0 && leftPointer < rightPointer) {
                 leftPointer++;
             }
-            while (array[rightPointer].compareTo(pivot) >= 0 && rightPointer > leftPointer) {
+            while (array[rightPointer].compareToIgnoreCase(pivot) >= 0 && rightPointer > leftPointer) {
                 rightPointer--;
             }
             swapElements(array, leftPointer, rightPointer);

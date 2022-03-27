@@ -1,6 +1,6 @@
 package com.solvd.laba.homework3;
 
-public class Succession extends Service implements IBudget {
+public class Succession extends Service implements IBudgetable {
     private ThirdParty thirdParty;
     private Property property;
 
@@ -48,5 +48,19 @@ public class Succession extends Service implements IBudget {
                 super.toString() + "\n" +
                 this.thirdParty + "\n" +
                 this.property;
+    }
+
+    @Override
+    public Lawyer assignLawyer(int option) {
+        return FAMILY_LAWYER;
+    }
+
+    @Override
+    public Succession openCase(int option) {
+        this.client = new Client().update();
+        this.lawyer = assignLawyer(option);
+        this.thirdParty = new ThirdParty().update();
+        this.property = new Property().update();
+        return this;
     }
 }

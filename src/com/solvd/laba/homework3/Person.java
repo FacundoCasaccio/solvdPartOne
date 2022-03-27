@@ -1,6 +1,6 @@
 package com.solvd.laba.homework3;
 
-public abstract class Person {
+public abstract class Person implements IUpdateable {
     protected String name;
     protected String surname;
     protected int personalId;

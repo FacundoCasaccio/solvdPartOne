@@ -1,6 +1,6 @@
 package com.solvd.laba.homework3;
 
-public abstract class Asset {
+public abstract class Asset implements IUpdateable {
     protected double value;
     protected ThirdParty owner;
 

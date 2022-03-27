@@ -4,9 +4,6 @@ public class Main {
     public static void main(String[] args) {
         int option;
         Ticket ticket;
-        Lawyer lawyer;
-        Client client;
-        ThirdParty thirdParty;
 
         //Welcome message
         System.out.println("Welcome to Law office \n");
@@ -17,60 +14,38 @@ public class Main {
 
         switch (option) {
             case 1:
+                //Capture option
                 Menu.area();
                 option = Menu.selectOption();
-
-                //Lawyer assignation
-                lawyer = RequestManager.assignLawyer(option);
-                //Client data input
-                client = RequestManager.updateClient();
-
+                //Service creation
+                Counseling counseling = new Counseling().openCase(option);
                 //Ticket creation
-                ticket = new Ticket(lawyer, client);
-
+                ticket = new Ticket(counseling);
                 //Print ticket
-                System.out.println(ticket);
+                ticket.print();
                 break;
 
             case 2:
-                Claimant claimant;
-
+                //Capture option
                 Menu.area();
                 option = Menu.selectOption();
 
-                //Lawyer assignation
-                lawyer = RequestManager.assignLawyer(option);
-                //Client data input
-                client = RequestManager.updateClient();
-                //Claimant data input
-                claimant = RequestManager.updateClaimant();
-                //ThirdParty data input
-                thirdParty = RequestManager.updateThirdParty();
-
+                //Service creation
+                Protection protection = new Protection().openCase(option);
                 //Ticket creation
-                ticket = new Ticket(lawyer, client, claimant, thirdParty);
-
+                ticket = new Ticket(protection);
                 //Print ticket
-                System.out.println(ticket);
+                ticket.print();
                 break;
 
             case 3:
+                //Service creation
+                Succession succession = new Succession().openCase(option);
                 Property property;
-
-                //Lawyer assignation
-                lawyer = RequestManager.assignLawyer(option);
-                //Client data input
-                client = RequestManager.updateClient();
-                //ThirdParty data input
-                thirdParty = RequestManager.updateThirdParty();
-                //Property data input
-                property = RequestManager.updateProperty();
-
                 //Ticket creation
-                ticket = new Ticket(lawyer, client, thirdParty, property);
-
+                ticket = new Ticket(succession);
                 //Print ticket
-                System.out.println(ticket);
+                ticket.print();
                 break;
         }
 

@@ -1,6 +1,6 @@
 package com.solvd.laba.homework3;
 
-public class Ticket {
+public class Ticket implements IPrintable{
     private Service service;
     private double budget;
     private static int ticketId;
@@ -10,30 +10,24 @@ public class Ticket {
     }
 
     //Counseling ticket constructor
-    public Ticket(Lawyer lawyer, Client client) {
+    public Ticket(Counseling counseling) {
         ticketId++;
-        IBudget serviceImpl = new Counseling(lawyer, client);
-
-        this.service = new Counseling(lawyer, client);
-        this.budget = serviceImpl.calculateBudget();
+        this.service = counseling;
+        this.budget = counseling.calculateBudget();
     }
 
     //Protection ticket constructor
-    public Ticket(Lawyer lawyer, Client client, Claimant claimant, ThirdParty thirdParty) {
+    public Ticket(Protection protection) {
         ticketId++;
-        IBudget serviceImpl = new Protection(lawyer, client, claimant, thirdParty);
-
-        this.service = new Protection(lawyer, client, claimant, thirdParty);
-        this.budget = serviceImpl.calculateBudget();
+        this.service = protection;
+        this.budget = protection.calculateBudget();
     }
 
     //Succession ticket constructor
-    public Ticket(Lawyer lawyer, Client client, ThirdParty thirdParty, Property property) {
+    public Ticket(Succession succession) {
         ticketId++;
-        IBudget serviceImpl = new Succession(lawyer, client, thirdParty, property);
-
-        this.service = new Succession(lawyer, client, thirdParty, property);
-        this.budget = serviceImpl.calculateBudget();
+        this.service = succession;
+        this.budget = succession.calculateBudget();
     }
 
     public Service getService() {
@@ -63,7 +57,12 @@ public class Ticket {
     @Override
     public String toString() {
         return "\n\nTicket " + ticketId + "\n" +
-                this.service + "\n\n\n" +
-                "Budget=" + this.budget;
+                this.service + "\n\n" +
+                "Budget: $" + this.budget;
+    }
+
+    @Override
+    public void print() {
+        System.out.println((this));
     }
 }

@@ -1,5 +1,7 @@
 package com.solvd.laba.homework3;
 
+import java.util.Scanner;
+
 public class Claimant extends Person {
     private Address address;
     private Lawyer lawyer;
@@ -35,5 +37,29 @@ public class Claimant extends Person {
         return "Claimant: " + super.toString() + "\n" +
                 this.address + "\n" +
                 this.lawyer + "\n";
+    }
+
+
+    @Override
+    public Claimant update() {
+        Scanner input = new Scanner(System.in);
+
+        //Claimant personal data
+        System.out.print("Enter claimant name: ");
+        this.setName(input.nextLine());
+        System.out.print("Enter claimant surname: ");
+        this.setSurname(input.nextLine());
+        System.out.print("Enter claimant Id number: ");
+        this.setPersonalId(input.nextInt());
+        input.nextLine(); //Consume line
+
+        //Claimant address update
+        System.out.println("\nEnter claimant Address: ");
+        this.address = new Address().update();
+
+        //Claimant lawyer update
+        this.lawyer = new Lawyer().update();
+
+        return this;
     }
 }

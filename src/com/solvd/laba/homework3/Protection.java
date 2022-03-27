@@ -1,6 +1,6 @@
 package com.solvd.laba.homework3;
 
-public class Protection extends Service implements IBudget{
+public class Protection extends Service implements IBudgetable {
     private Claimant claimant;
     private ThirdParty thirdParty;
 
@@ -59,5 +59,43 @@ public class Protection extends Service implements IBudget{
                 super.toString() + "\n" +
                 this.claimant + "\n" +
                 this.thirdParty;
+    }
+
+    @Override
+    public Lawyer assignLawyer(int option) {
+        Lawyer lawyer;
+
+        switch (option) {
+            case 1:
+                lawyer = CRIMINAL_LAWYER;
+                break;
+            case 2:
+                lawyer = LABOR_LAWYER;
+                break;
+            case 3:
+                lawyer = FAMILY_LAWYER;
+                break;
+            case 4:
+                lawyer = CORPORATE_LAWYER;
+                break;
+            case 5:
+                lawyer = CIVIL_LAWYER;
+                break;
+            case 6:
+                lawyer = BUSINESS_LAWYER;
+                break;
+            default:
+                return null;
+        }
+        return lawyer;
+    }
+
+    @Override
+    public Protection openCase(int option) {
+        this.client.update();
+        this.lawyer = assignLawyer(option);
+        this.claimant.update();
+        this.thirdParty.update();
+        return this;
     }
 }

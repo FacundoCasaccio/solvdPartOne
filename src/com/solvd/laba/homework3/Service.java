@@ -1,10 +1,14 @@
 package com.solvd.laba.homework3;
 
-public abstract class Service {
+public abstract class Service implements IAssignable, IOpenable {
     protected Lawyer lawyer;
     protected Client client;
 
     public Service() {
+    }
+
+    public Service(Client client) {
+        this.client = client;
     }
 
     public Service(Lawyer lawyer, Client client) {

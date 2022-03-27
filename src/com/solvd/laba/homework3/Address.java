@@ -1,6 +1,8 @@
 package com.solvd.laba.homework3;
 
-public class Address {
+import java.util.Scanner;
+
+public class Address implements IUpdateable {
     private String country;
     private String state;
     private String city;
@@ -56,6 +58,25 @@ public class Address {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public Address update() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Country: ");
+        this.setCountry(input.nextLine());
+        System.out.print("State: ");
+        this.setState(input.nextLine());
+        System.out.print("City: ");
+        this.setCity(input.nextLine());
+        System.out.print("Street: ");
+        this.setStreet(input.nextLine());
+        System.out.print("Number: ");
+        this.setNumber(input.nextInt());
+        input.nextLine(); //Consume line
+        System.out.println();
+
+        return this;
     }
 
     @Override

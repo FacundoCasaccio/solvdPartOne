@@ -1,5 +1,7 @@
 package com.solvd.laba.homework3;
 
+import java.util.Scanner;
+
 public class Client extends Person {
     private static int clientId;
     private Address address;
@@ -30,5 +32,25 @@ public class Client extends Person {
     @Override
     public String toString() {
         return "Client: " + super.toString() + "\n" + this.address + "\n";
+    }
+
+    @Override
+    public Client update() {
+        Scanner input = new Scanner(System.in);
+
+        //Client personal data
+        System.out.print("Enter client name: ");
+        this.setName(input.nextLine());
+        System.out.print("Enter client surname: ");
+        this.setSurname(input.nextLine());
+        System.out.print("Enter client Id number: ");
+        this.setPersonalId(input.nextInt());
+        input.nextLine(); //Consume line
+
+        //Client address update
+        System.out.println("\nEnter client Address: ");
+        this.address = new Address().update();
+
+        return this;
     }
 }

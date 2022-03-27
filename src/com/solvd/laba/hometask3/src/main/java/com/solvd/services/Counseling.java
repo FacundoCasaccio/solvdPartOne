@@ -1,8 +1,8 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.services;
+package com.solvd.services;
 
-import com.solvd.laba.hometask3.src.main.java.com.solvd.agents.Client;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.agents.Lawyer;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.interfaces.IBudgetable;
+import com.solvd.agents.Client;
+import com.solvd.agents.Lawyer;
+import com.solvd.interfaces.IBudgetable;
 
 public class Counseling extends Service implements IBudgetable {
 

@@ -1,4 +1,4 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.interfaces;
+package com.solvd.interfaces;
 
 public interface IOpenable<T> {
 

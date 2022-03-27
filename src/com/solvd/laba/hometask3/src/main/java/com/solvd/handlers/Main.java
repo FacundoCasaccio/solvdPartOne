@@ -1,9 +1,9 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.handlers;
+package com.solvd.handlers;
 
-import com.solvd.laba.hometask3.src.main.java.com.solvd.agents.Property;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Counseling;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Protection;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Succession;
+import com.solvd.agents.Property;
+import com.solvd.services.Counseling;
+import com.solvd.services.Protection;
+import com.solvd.services.Succession;
 
 public class Main {
     public static void main(String[] args) {

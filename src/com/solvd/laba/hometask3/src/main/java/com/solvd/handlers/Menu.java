@@ -1,4 +1,4 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.handlers;
+package com.solvd.handlers;
 
 import java.util.Scanner;
 

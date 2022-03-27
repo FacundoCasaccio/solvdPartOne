@@ -1,10 +1,10 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.handlers;
+package com.solvd.handlers;
 
-import com.solvd.laba.hometask3.src.main.java.com.solvd.interfaces.IPrintable;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Counseling;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Protection;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Service;
-import com.solvd.laba.hometask3.src.main.java.com.solvd.services.Succession;
+import com.solvd.interfaces.IPrintable;
+import com.solvd.services.Counseling;
+import com.solvd.services.Protection;
+import com.solvd.services.Service;
+import com.solvd.services.Succession;
 
 public class Ticket implements IPrintable {
     private Service service;

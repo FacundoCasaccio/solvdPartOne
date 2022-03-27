@@ -1,6 +1,6 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.agents;
+package com.solvd.agents;
 
-import com.solvd.laba.hometask3.src.main.java.com.solvd.interfaces.IUpdateable;
+import com.solvd.interfaces.IUpdateable;
 
 import java.util.Scanner;
 

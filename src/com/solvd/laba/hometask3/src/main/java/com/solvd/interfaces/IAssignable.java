@@ -1,6 +1,6 @@
-package com.solvd.laba.hometask3.src.main.java.com.solvd.interfaces;
+package com.solvd.interfaces;
 
-import com.solvd.laba.hometask3.src.main.java.com.solvd.agents.Lawyer;
+import com.solvd.agents.Lawyer;
 
 public interface IAssignable {
 

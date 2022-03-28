@@ -2,6 +2,10 @@ package com.solvd.interfaces;
 
 import com.solvd.agents.Lawyer;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public interface IAssignable {
 
     Lawyer CRIMINAL_LAWYER = new Lawyer("John", "Wick", 32453876, 333666, "criminal");

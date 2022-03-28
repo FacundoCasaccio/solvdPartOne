@@ -1,6 +1,7 @@
 package com.solvd.handlers;
 
 import com.solvd.agents.Property;
+import com.solvd.collections.OfficeClients;
 import com.solvd.exceptions.InvalidArea;
 import com.solvd.exceptions.InvalidService;
 import com.solvd.services.Counseling;
@@ -16,6 +17,7 @@ public class Main {
     public static void main(String[] args) {
         int option = 0;
         Ticket ticket;
+        OfficeClients clients = new OfficeClients();
 
         //Welcome message
         System.out.println("Welcome to Law office \n");
@@ -42,6 +44,8 @@ public class Main {
 
                 //Service creation
                 Counseling counseling = new Counseling().openCase(option);
+                //Add client to clients list
+                clients.addClient(counseling.getClient());
                 //Ticket creation
                 ticket = new Ticket(counseling);
                 //Print ticket
@@ -61,6 +65,8 @@ public class Main {
 
                 //Service creation
                 Protection protection = new Protection().openCase(option);
+                //Add client to clients list
+                clients.addClient(protection.getClient());
                 //Ticket creation
                 ticket = new Ticket(protection);
                 //Print ticket
@@ -70,13 +76,16 @@ public class Main {
             case 3:
                 //Service creation
                 Succession succession = new Succession().openCase(option);
-                Property property;
+                //Add client to clients list
+                clients.addClient(succession.getClient());
                 //Ticket creation
                 ticket = new Ticket(succession);
                 //Print ticket
                 ticket.print();
                 break;
         }
+
+
 
     }
 }

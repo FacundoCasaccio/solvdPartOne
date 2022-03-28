@@ -22,7 +22,6 @@ public class Main {
         //Welcome message
         System.out.println("Welcome to Law office \n");
 
-
         //Service selection
         Menu.services();
         try {

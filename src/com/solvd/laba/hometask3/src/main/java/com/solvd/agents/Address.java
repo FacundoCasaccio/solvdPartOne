@@ -1,11 +1,11 @@
 package com.solvd.agents;
 
-import com.solvd.exceptions.InvalidValue;
+import com.solvd.exceptions.InvalidValueException;
 import com.solvd.interfaces.IUpdateable;
 
 import java.util.Scanner;
 
-public class Address implements IUpdateable {
+public class Address implements IUpdateable<Address> {
     private String country;
     private String state;
     private String city;
@@ -63,23 +63,24 @@ public class Address implements IUpdateable {
         this.number = number;
     }
 
-    public Address update() throws InvalidValue {
-        Scanner input = new Scanner(System.in);
+    public Address update() throws InvalidValueException {
+        try (Scanner input = new Scanner(System.in)) {
 
-        System.out.print("Country: ");
-        this.setCountry(input.nextLine());
-        System.out.print("State: ");
-        this.setState(input.nextLine());
-        System.out.print("City: ");
-        this.setCity(input.nextLine());
-        System.out.print("Street: ");
-        this.setStreet(input.nextLine());
-        System.out.print("Number: ");
-        this.setNumber(input.nextInt());
-        if (this.number <= 0) {
-            throw new InvalidValue("Address number cannot be below 0");
+            System.out.print("Country: ");
+            this.setCountry(input.nextLine());
+            System.out.print("State: ");
+            this.setState(input.nextLine());
+            System.out.print("City: ");
+            this.setCity(input.nextLine());
+            System.out.print("Street: ");
+            this.setStreet(input.nextLine());
+            System.out.print("Number: ");
+            this.setNumber(input.nextInt());
+            if (this.number <= 0) {
+                throw new InvalidValueException("Address number cannot be below 0");
+            }
+            input.nextLine(); //Consume line
         }
-        input.nextLine(); //Consume line
         System.out.println();
 
         return this;

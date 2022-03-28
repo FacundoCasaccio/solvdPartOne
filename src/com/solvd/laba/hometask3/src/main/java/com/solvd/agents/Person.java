@@ -2,7 +2,7 @@ package com.solvd.agents;
 
 import com.solvd.interfaces.IUpdateable;
 
-public abstract class Person implements IUpdateable {
+public abstract class Person implements IUpdateable<Person> {
     protected String name;
     protected String surname;
     protected int personalId;

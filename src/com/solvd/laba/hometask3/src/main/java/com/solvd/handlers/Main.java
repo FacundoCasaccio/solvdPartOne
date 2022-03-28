@@ -1,9 +1,9 @@
 package com.solvd.handlers;
 
-import com.solvd.agents.Property;
 import com.solvd.collections.OfficeClients;
-import com.solvd.exceptions.InvalidArea;
-import com.solvd.exceptions.InvalidService;
+import com.solvd.collections.OfficeLawyers;
+import com.solvd.exceptions.InvalidAreaException;
+import com.solvd.exceptions.InvalidServiceException;
 import com.solvd.services.Counseling;
 import com.solvd.services.Protection;
 import com.solvd.services.Succession;
@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class Main {
     //Logger
     public static final Logger LOGGER = LogManager.getLogger(Main.class);
+    public static final OfficeLawyers LAWYERS = new OfficeLawyers();
 
     public static void main(String[] args) {
         int option = 0;
@@ -26,7 +27,7 @@ public class Main {
         Menu.services();
         try {
             option = Menu.selectService();
-        } catch (InvalidService e) {
+        } catch (InvalidServiceException e) {
             LOGGER.warn(e.getMessage());
         }
 
@@ -37,7 +38,7 @@ public class Main {
                 Menu.area();
                 try {
                     option = Menu.selectArea();
-                } catch (InvalidArea e) {
+                } catch (InvalidAreaException e) {
                     LOGGER.warn(e.getMessage());
                 }
 
@@ -58,7 +59,7 @@ public class Main {
                 Menu.area();
                 try {
                     option = Menu.selectArea();
-                } catch (InvalidArea e) {
+                } catch (InvalidAreaException e) {
                     LOGGER.warn(e.getMessage());
                 }
 

@@ -1,7 +1,6 @@
 package com.solvd.agents;
 
-import com.solvd.exceptions.InvalidValue;
-import com.solvd.services.Succession;
+import com.solvd.exceptions.InvalidValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,24 +43,25 @@ public class ThirdParty extends Person {
 
     @Override
     public ThirdParty update() {
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
-        //ThirdParty personal data
-        System.out.print("Enter Third party name: ");
-        this.setName(input.nextLine());
-        System.out.print("Enter Third party surname: ");
-        this.setSurname(input.nextLine());
-        System.out.print("Enter Third party role: ");
-        this.setRole(input.nextLine());
-        System.out.print("Enter Third party Id number: ");
-        this.setPersonalId(input.nextInt());
-        input.nextLine(); //Consume line
+            //ThirdParty personal data
+            System.out.print("Enter Third party name: ");
+            this.setName(input.nextLine());
+            System.out.print("Enter Third party surname: ");
+            this.setSurname(input.nextLine());
+            System.out.print("Enter Third party role: ");
+            this.setRole(input.nextLine());
+            System.out.print("Enter Third party Id number: ");
+            this.setPersonalId(input.nextInt());
+            input.nextLine(); //Consume line
+        }
 
         //ThirdParty address update
         System.out.println("\nEnter Third party Address: ");
         try {
             this.address = new Address().update();
-        } catch (InvalidValue e) {
+        } catch (InvalidValueException e) {
             Logger logger = LogManager.getLogger(ThirdParty.class);
             logger.warn(e.getMessage());
         }

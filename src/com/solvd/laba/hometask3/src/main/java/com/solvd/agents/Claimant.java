@@ -1,7 +1,6 @@
 package com.solvd.agents;
 
-import com.solvd.exceptions.InvalidValue;
-import com.solvd.services.Succession;
+import com.solvd.exceptions.InvalidValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,22 +46,23 @@ public class Claimant extends Person {
 
     @Override
     public Claimant update() {
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
-        //Claimant personal data
-        System.out.print("Enter claimant name: ");
-        this.setName(input.nextLine());
-        System.out.print("Enter claimant surname: ");
-        this.setSurname(input.nextLine());
-        System.out.print("Enter claimant Id number: ");
-        this.setPersonalId(input.nextInt());
-        input.nextLine(); //Consume line
+            //Claimant personal data
+            System.out.print("Enter claimant name: ");
+            this.setName(input.nextLine());
+            System.out.print("Enter claimant surname: ");
+            this.setSurname(input.nextLine());
+            System.out.print("Enter claimant Id number: ");
+            this.setPersonalId(input.nextInt());
+            input.nextLine(); //Consume line
+        }
 
         //Claimant address update
         System.out.println("\nEnter claimant Address: ");
         try {
             this.address = new Address().update();
-        } catch (InvalidValue e) {
+        } catch (InvalidValueException e) {
             Logger logger = LogManager.getLogger(Claimant.class);
             logger.warn(e.getMessage());
         }

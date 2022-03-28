@@ -39,17 +39,18 @@ public class Lawyer extends Person {
 
     @Override
     public Lawyer update() {
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
-        System.out.print("Enter claimant lawyer name: ");
-        this.setName(input.nextLine());
-        System.out.print("Enter claimant lawyer surname: ");
-        this.setSurname(input.nextLine());
-        System.out.print("Enter claimant lawyer speciality: ");
-        this.setSpeciality(input.nextLine());
-        System.out.print("Enter claimant lawyer enrollment: ");
-        this.setEnrollment(input.nextInt());
-        input.nextLine();//Consume line
+            System.out.print("Enter claimant lawyer name: ");
+            this.setName(input.nextLine());
+            System.out.print("Enter claimant lawyer surname: ");
+            this.setSurname(input.nextLine());
+            System.out.print("Enter claimant lawyer speciality: ");
+            this.setSpeciality(input.nextLine());
+            System.out.print("Enter claimant lawyer enrollment: ");
+            this.setEnrollment(input.nextInt());
+            input.nextLine();//Consume line
+        }
         System.out.println();
 
         return this;

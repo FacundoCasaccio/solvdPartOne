@@ -3,6 +3,7 @@ package com.solvd.services;
 import com.solvd.agents.Client;
 import com.solvd.agents.Lawyer;
 import com.solvd.collections.OfficeLawyers;
+import com.solvd.handlers.Main;
 import com.solvd.interfaces.IBudgetable;
 
 public class Counseling extends Service implements IBudgetable {
@@ -50,7 +51,7 @@ public class Counseling extends Service implements IBudgetable {
 
     @Override
     public Lawyer assignLawyer(int option) {
-        return new OfficeLawyers().getLawyerByOption(option);
+        return Main.LAWYERS.getLawyerByOption(option);
     }
 
     @Override

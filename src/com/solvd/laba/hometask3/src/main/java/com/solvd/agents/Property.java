@@ -1,6 +1,6 @@
 package com.solvd.agents;
 
-import com.solvd.exceptions.InvalidValue;
+import com.solvd.exceptions.InvalidValueException;
 
 import java.util.Scanner;
 
@@ -43,26 +43,27 @@ public class Property extends Asset {
     }
 
     @Override
-    public Property update() throws InvalidValue {
-        Scanner input = new Scanner(System.in);
+    public Property update() throws InvalidValueException {
+        try (Scanner input = new Scanner(System.in)) {
 
-        //Property owner
-        System.out.println("Property owner data: \n");
-        this.owner = new ThirdParty().update();
+            //Property owner
+            System.out.println("Property owner data: \n");
+            this.owner = new ThirdParty().update();
 
-        //Property data
-        System.out.print("Enter property's value: ");
-        this.setValue(parseDouble((input.nextLine())));
-        if (this.value < 0){
-            throw new InvalidValue("Value cannot be negative");
+            //Property data
+            System.out.print("Enter property's value: ");
+            this.setValue(parseDouble((input.nextLine())));
+            if (this.value < 0) {
+                throw new InvalidValueException("Value cannot be negative");
+            }
+
+            System.out.print("Enter property's dimension: ");
+            this.setDimension(input.nextInt());
+            if (this.dimension <= 0) {
+                throw new InvalidValueException("Dimension cannot be 0 or less");
+            }
+            input.nextLine(); //Consume line
         }
-
-        System.out.print("Enter property's dimension: ");
-        this.setDimension(input.nextInt());
-        if (this.dimension <= 0){
-            throw new InvalidValue("Dimension cannot be 0 or less");
-        }
-        input.nextLine(); //Consume line
 
         //Property address update
         System.out.println("\nEnter property's address: ");

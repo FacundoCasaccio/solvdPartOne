@@ -1,7 +1,6 @@
 package com.solvd.agents;
 
-import com.solvd.exceptions.InvalidValue;
-import com.solvd.services.Succession;
+import com.solvd.exceptions.InvalidValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,22 +40,23 @@ public class Client extends Person {
 
     @Override
     public Client update() {
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
-        //Client personal data
-        System.out.print("Enter client name: ");
-        this.setName(input.nextLine());
-        System.out.print("Enter client surname: ");
-        this.setSurname(input.nextLine());
-        System.out.print("Enter client Id number: ");
-        this.setPersonalId(input.nextInt());
-        input.nextLine(); //Consume line
+            //Client personal data
+            System.out.print("Enter client name: ");
+            this.setName(input.nextLine());
+            System.out.print("Enter client surname: ");
+            this.setSurname(input.nextLine());
+            System.out.print("Enter client Id number: ");
+            this.setPersonalId(input.nextInt());
+            input.nextLine(); //Consume line
+        }
 
         //Client address update
         System.out.println("\nEnter client Address: ");
         try {
             this.address = new Address().update();
-        } catch (InvalidValue e) {
+        } catch (InvalidValueException e) {
             Logger logger = LogManager.getLogger(Client.class);
             logger.warn(e.getMessage());
         }

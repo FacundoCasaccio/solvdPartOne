@@ -2,6 +2,7 @@ package com.solvd.services;
 
 import com.solvd.agents.Client;
 import com.solvd.agents.Lawyer;
+import com.solvd.collections.OfficeLawyers;
 import com.solvd.interfaces.IBudgetable;
 
 public class Counseling extends Service implements IBudgetable {
@@ -49,31 +50,7 @@ public class Counseling extends Service implements IBudgetable {
 
     @Override
     public Lawyer assignLawyer(int option) {
-        Lawyer lawyer;
-
-        switch (option) {
-            case 1:
-                lawyer = CRIMINAL_LAWYER;
-                break;
-            case 2:
-                lawyer = LABOR_LAWYER;
-                break;
-            case 3:
-                lawyer = FAMILY_LAWYER;
-                break;
-            case 4:
-                lawyer = CORPORATE_LAWYER;
-                break;
-            case 5:
-                lawyer = CIVIL_LAWYER;
-                break;
-            case 6:
-                lawyer = BUSINESS_LAWYER;
-                break;
-            default:
-                return null;
-        }
-        return lawyer;
+        return new OfficeLawyers().getLawyerByOption(option);
     }
 
     @Override

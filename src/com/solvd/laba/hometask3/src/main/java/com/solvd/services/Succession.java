@@ -4,6 +4,7 @@ import com.solvd.agents.Client;
 import com.solvd.agents.Lawyer;
 import com.solvd.agents.Property;
 import com.solvd.agents.ThirdParty;
+import com.solvd.collections.OfficeLawyers;
 import com.solvd.exceptions.InvalidValue;
 import com.solvd.interfaces.IBudgetable;
 import org.apache.logging.log4j.LogManager;
@@ -61,7 +62,7 @@ public class Succession extends Service implements IBudgetable {
 
     @Override
     public Lawyer assignLawyer(int option) {
-        return FAMILY_LAWYER;
+        return new OfficeLawyers().getLawyerByOption(option);
     }
 
     @Override

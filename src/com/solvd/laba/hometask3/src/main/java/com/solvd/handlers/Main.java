@@ -1,27 +1,45 @@
 package com.solvd.handlers;
 
 import com.solvd.agents.Property;
+import com.solvd.exceptions.InvalidArea;
+import com.solvd.exceptions.InvalidService;
 import com.solvd.services.Counseling;
 import com.solvd.services.Protection;
 import com.solvd.services.Succession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
+    //Logger
+    public static final Logger LOGGER = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
-        int option;
+        int option = 0;
         Ticket ticket;
 
         //Welcome message
         System.out.println("Welcome to Law office \n");
 
+
         //Service selection
         Menu.services();
-        option = Menu.selectOption();
+        try {
+            option = Menu.selectService();
+        } catch (InvalidService e) {
+            LOGGER.warn(e.getMessage());
+        }
+
 
         switch (option) {
             case 1:
                 //Capture option
                 Menu.area();
-                option = Menu.selectOption();
+                try {
+                    option = Menu.selectArea();
+                } catch (InvalidArea e) {
+                    LOGGER.warn(e.getMessage());
+                }
+
                 //Service creation
                 Counseling counseling = new Counseling().openCase(option);
                 //Ticket creation
@@ -33,7 +51,13 @@ public class Main {
             case 2:
                 //Capture option
                 Menu.area();
-                option = Menu.selectOption();
+                //Capture option
+                Menu.area();
+                try {
+                    option = Menu.selectArea();
+                } catch (InvalidArea e) {
+                    LOGGER.warn(e.getMessage());
+                }
 
                 //Service creation
                 Protection protection = new Protection().openCase(option);

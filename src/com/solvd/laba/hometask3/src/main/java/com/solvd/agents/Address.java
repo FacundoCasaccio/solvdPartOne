@@ -1,5 +1,6 @@
 package com.solvd.agents;
 
+import com.solvd.exceptions.InvalidValue;
 import com.solvd.interfaces.IUpdateable;
 
 import java.util.Scanner;
@@ -62,7 +63,7 @@ public class Address implements IUpdateable {
         this.number = number;
     }
 
-    public Address update() {
+    public Address update() throws InvalidValue {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Country: ");
@@ -75,6 +76,9 @@ public class Address implements IUpdateable {
         this.setStreet(input.nextLine());
         System.out.print("Number: ");
         this.setNumber(input.nextInt());
+        if (this.number <= 0) {
+            throw new InvalidValue("Address number cannot be below 0");
+        }
         input.nextLine(); //Consume line
         System.out.println();
 

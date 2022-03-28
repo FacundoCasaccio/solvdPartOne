@@ -1,6 +1,8 @@
 package com.solvd.interfaces;
 
+import com.solvd.exceptions.InvalidValue;
+
 public interface IUpdateable<T> {
 
-    T update();
+    T update() throws InvalidValue;
 }

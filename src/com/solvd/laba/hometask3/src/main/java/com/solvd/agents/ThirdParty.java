@@ -1,5 +1,10 @@
 package com.solvd.agents;
 
+import com.solvd.exceptions.InvalidValue;
+import com.solvd.services.Succession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Scanner;
 
 public class ThirdParty extends Person {
@@ -54,7 +59,12 @@ public class ThirdParty extends Person {
 
         //ThirdParty address update
         System.out.println("\nEnter Third party Address: ");
-        this.address = new Address().update();
+        try {
+            this.address = new Address().update();
+        } catch (InvalidValue e) {
+            Logger logger = LogManager.getLogger(ThirdParty.class);
+            logger.warn(e.getMessage());
+        }
 
         return this;
     }

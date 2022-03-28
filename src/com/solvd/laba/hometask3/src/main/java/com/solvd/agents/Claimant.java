@@ -1,5 +1,10 @@
 package com.solvd.agents;
 
+import com.solvd.exceptions.InvalidValue;
+import com.solvd.services.Succession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Scanner;
 
 public class Claimant extends Person {
@@ -55,7 +60,12 @@ public class Claimant extends Person {
 
         //Claimant address update
         System.out.println("\nEnter claimant Address: ");
-        this.address = new Address().update();
+        try {
+            this.address = new Address().update();
+        } catch (InvalidValue e) {
+            Logger logger = LogManager.getLogger(Claimant.class);
+            logger.warn(e.getMessage());
+        }
 
         //Claimant lawyer update
         this.lawyer = new Lawyer().update();

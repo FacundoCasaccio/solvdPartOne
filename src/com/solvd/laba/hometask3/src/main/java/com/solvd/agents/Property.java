@@ -1,5 +1,7 @@
 package com.solvd.agents;
 
+import com.solvd.exceptions.InvalidValue;
+
 import java.util.Scanner;
 
 import static java.lang.Double.parseDouble;
@@ -41,7 +43,7 @@ public class Property extends Asset {
     }
 
     @Override
-    public Property update() {
+    public Property update() throws InvalidValue {
         Scanner input = new Scanner(System.in);
 
         //Property owner
@@ -51,8 +53,15 @@ public class Property extends Asset {
         //Property data
         System.out.print("Enter property's value: ");
         this.setValue(parseDouble((input.nextLine())));
+        if (this.value < 0){
+            throw new InvalidValue("Value cannot be negative");
+        }
+
         System.out.print("Enter property's dimension: ");
         this.setDimension(input.nextInt());
+        if (this.dimension <= 0){
+            throw new InvalidValue("Dimension cannot be 0 or less");
+        }
         input.nextLine(); //Consume line
 
         //Property address update

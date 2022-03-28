@@ -4,7 +4,10 @@ import com.solvd.agents.Client;
 import com.solvd.agents.Lawyer;
 import com.solvd.agents.Property;
 import com.solvd.agents.ThirdParty;
+import com.solvd.exceptions.InvalidValue;
 import com.solvd.interfaces.IBudgetable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Succession extends Service implements IBudgetable {
     private ThirdParty thirdParty;
@@ -66,7 +69,13 @@ public class Succession extends Service implements IBudgetable {
         this.client = new Client().update();
         this.lawyer = assignLawyer(option);
         this.thirdParty = new ThirdParty().update();
-        this.property = new Property().update();
+        try {
+            this.property = new Property().update();
+        } catch (InvalidValue e) {
+            Logger logger = LogManager.getLogger(Succession.class);
+            logger.warn(e.getMessage());
+        }
+
         return this;
     }
 }

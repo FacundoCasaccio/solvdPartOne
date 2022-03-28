@@ -1,5 +1,8 @@
 package com.solvd.handlers;
 
+import com.solvd.exceptions.InvalidArea;
+import com.solvd.exceptions.InvalidService;
+
 import java.util.Scanner;
 
 public abstract class Menu {
@@ -21,9 +24,27 @@ public abstract class Menu {
                 "6- Business\n");
     }
 
-    public static int selectOption() {
+    public static int selectService() throws InvalidService {
         Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        int option;
+
+        option = input.nextInt();
+
+        if (option < 1 || option > 3) {
+            throw new InvalidService("Invalid service");
+        }
+        return option;
+    }
+
+    public static int selectArea() throws InvalidArea {
+        Scanner input = new Scanner(System.in);
+        int option;
+
+        option = input.nextInt();
+        if (option < 1 || option > 6) {
+            throw new InvalidArea("Invalid area");
+        }
+        return option;
     }
 
 }
